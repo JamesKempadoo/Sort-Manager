@@ -1,6 +1,8 @@
-package com.sparta.jk.mvc.model.bubble_sort;
+package com.sparta.jk.model.bubble_sort;
 
-public class BubbleSort {
+import com.sparta.jk.model.Sortable;
+
+public class BubbleSort implements Sortable {
     public static int[] bubbleSort(int[] array){
         int len = array.length; //Length of array
         boolean swap; //Boolean for check if the array has been swapped
@@ -24,5 +26,12 @@ public class BubbleSort {
             swap = true;
         }
         return swap;
+    }
+
+    @Override
+    public int[] sortArray(int[] unsortedArray) {
+        int[] tempArray = unsortedArray.clone();
+        bubbleSort(tempArray);
+        return tempArray;
     }
 }

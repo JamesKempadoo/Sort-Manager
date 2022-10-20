@@ -1,6 +1,8 @@
-package com.sparta.jk.mvc.model.merge_sort;
+package com.sparta.jk.model.merge_sort;
 
-public class MergeSort {
+import com.sparta.jk.model.Sortable;
+
+public class MergeSort implements Sortable {
     public static int[] mergeSort(int[] array) {
         int len = array.length;
         if (len < 2) {
@@ -39,4 +41,9 @@ public class MergeSort {
         }
     }
 
+    @Override
+    public int[] sortArray(int[] unsortedArray) {
+        int[] tempArray = unsortedArray.clone();
+        return mergeSort(tempArray);
+    }
 }

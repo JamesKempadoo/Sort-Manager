@@ -1,4 +1,4 @@
-package com.sparta.jk.mvc.model.binary_tree;
+package com.sparta.jk.model.binary_tree;
 
 import com.sparta.jk.exceptions.ChildNotFoundException;
 
