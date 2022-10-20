@@ -1,4 +1,4 @@
-package com.sparta.jk.model;
+package com.sparta.jk.mvc.model;
 
 import java.util.Random;
 

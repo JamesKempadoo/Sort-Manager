@@ -1,4 +1,4 @@
-package com.sparta.jk.model.binary_tree;
+package com.sparta.jk.mvc.model.binary_tree;
 
 public class Node {
     private final int value;

@@ -1,4 +1,4 @@
-package com.sparta.jk.model.binary_tree;
+package com.sparta.jk.mvc.model.binary_tree;
 
 import com.sparta.jk.exceptions.ChildNotFoundException;
 
@@ -9,9 +9,7 @@ public class BinarySort implements BinaryTreeSortable {
     public BinarySort(int element) {  //can't have a tree without a root Node
         this.rootNode = new Node(element);
     }
-
     //nest node class here
-
     //add node to the tree
     private void addNodeToTree(Node node, int element) {
         if (element < node.getValue()) { //I want to be the left child
