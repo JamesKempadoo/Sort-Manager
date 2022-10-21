@@ -10,7 +10,7 @@ public class SortFactory {
         return switch (algorithmOfChoice){
             case 1 -> "Bubble Sort";
             case 2 -> "Merge Sort";
-            default -> "Binary Sort Manager";
+            default -> "Binary Sort";
 
         };
     }

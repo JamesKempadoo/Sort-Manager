@@ -2,7 +2,11 @@ package com.sparta.jk.model.bubble_sort;
 
 import com.sparta.jk.model.Sortable;
 
+import java.util.Map;
+import java.util.logging.Logger;
+
 public class BubbleSort implements Sortable {
+    private static final Logger logger = Logger.getLogger("sort-logger");
     public static int[] bubbleSort(int[] array){
         int len = array.length; //Length of array
         boolean swap; //Boolean for check if the array has been swapped

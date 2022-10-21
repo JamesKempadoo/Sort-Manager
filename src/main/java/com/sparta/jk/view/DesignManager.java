@@ -1,22 +1,23 @@
 package com.sparta.jk.view;
 
 import com.sparta.jk.controller.OutputResultsManager;
-import com.sparta.jk.controller.SortManager;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DesignManager {
+
     public static void printMenu(){
         System.out.print("""
-                            |<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-                            |  Sort Manager                                             
-                            |  1 - Bubble Sort                                          
-                            |  2 - Merge Sort                                           
-                            |  3 - Binary Tree Sort                                     
-                            |  4 - Compare Speeds                  
-                            |  5 - Exit                                    
-                            |  Select by inputting number corresponding to the option   
-                            Your Choice:\s""");;
+                 |<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+                 |  Sort Manager                                             
+                 |  1 - Bubble Sort                                          
+                 |  2 - Merge Sort                                           
+                 |  3 - Binary Tree Sort                                     
+                 |  4 - Compare Speeds                  
+                 |  5 - Exit                                    
+                 |  Select by inputting number corresponding to the option   
+                 Your Choice:\s""");;
     }
 
     public static void printArrayLen(int arraySize, int elementSize) {
@@ -33,17 +34,36 @@ public class DesignManager {
     public static void printResults(OutputResultsManager outputResultsManager){
         System.out.println("""
                 |<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
-                |  Sort Algorithm:\s""" + outputResultsManager.getAlgorithmName() +"\n"
-             + "|  Original Array:\s" + (Arrays.toString(outputResultsManager.getUnsortedArray())) +"\n"
+                |  Sort Algorithm:\s""" + outputResultsManager.algorithmName() +"\n"
+             + "|  Original Array:\s" + (Arrays.toString(outputResultsManager.unsortedArray())) +"\n"
              + "|------------------------------------------------------------" +"\n"
-             + "|  Sorted Array:\s" + (Arrays.toString(outputResultsManager.getSortedArray())) +"\n"
+             + "|  Sorted Array:\s" + (Arrays.toString(outputResultsManager.sortedArray())) +"\n"
              + "|------------------------------------------------------------" +"\n"
-             + "|  Time Take To Run:\s" + outputResultsManager.getTimeTaken() +" milliseconds\n"
+             + "|  Time Take To Run:\s" + outputResultsManager.timeTaken() +" nanoseconds\n"
                 );
+    }
+
+    public static void printComparison(ArrayList<OutputResultsManager> listOfAlgorithms) {
+        System.out.println("""
+                |<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"
+                |  Running Algorithms""");
+        for (OutputResultsManager outputResultsManager : listOfAlgorithms){
+            printResults(outputResultsManager);
+        }
+        System.out.println("""
+                        |<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+                        |  Sort Algorithm : Time take (Nanoseconds)""");
+        for (OutputResultsManager outputResultsManager : listOfAlgorithms){
+            System.out.println("|  " + outputResultsManager.algorithmName()
+                    +" : " + outputResultsManager.timeTaken());
+        }
+        System.out.println("");
     }
 
 
     public static void printString(String string){
         System.out.println(string);
     }
+
+
 }

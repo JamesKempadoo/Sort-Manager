@@ -2,38 +2,31 @@ package com.sparta.jk.controller;
 
 import com.sparta.jk.model.Sortable;
 
-public class OutputResultsManager {
-    private final String algorithmName;
-    private final int[] sortedArray;
-    private final int[] unsortedArray;
-    private final double timeTaken;
+import java.util.ArrayList;
 
-    public OutputResultsManager(String algorithmName,int[] sortedArray,
-                                int[] unsortedArray,  double timeTaken) {
-        this.algorithmName = algorithmName;
-        this.sortedArray = sortedArray;
-        this.unsortedArray = unsortedArray;
-        this.timeTaken = timeTaken;
-    }
+import static com.sparta.jk.controller.SortManager.ALGORITHMS_IMPLEMENTED;
 
-    public static OutputResultsManager sortingAlgorithm(int algorithmOfChoice, int[] unsortedArray){
+public record OutputResultsManager(String algorithmName, int[] sortedArray, int[] unsortedArray, double timeTaken) {
+
+    public static OutputResultsManager sortingAlgorithm(int algorithmOfChoice, int[] unsortedArray) {
         Sortable algorithm = SortFactory.getAlgorithm(algorithmOfChoice);
         String algorithmName = SortFactory.getAlgorithmNames(algorithmOfChoice);
         double startTime = System.nanoTime();
         int[] sortedArray = algorithm.sortArray(unsortedArray);
-        double  endTime = System.nanoTime();
+        double endTime = System.nanoTime();
         double sortTime = (endTime - startTime);
-        return new OutputResultsManager(algorithmName,sortedArray,unsortedArray,sortTime);
-
+        return new OutputResultsManager(algorithmName, sortedArray, unsortedArray, sortTime);
     }
 
+    public static ArrayList<OutputResultsManager> allSortingAlgorithms(int[] unsortedArray) {
+        ArrayList<OutputResultsManager> listOfResults = new ArrayList<>();
+        for (int i = 0; i < ALGORITHMS_IMPLEMENTED; i++) {
+            listOfResults.add(sortingAlgorithm(i, unsortedArray));
+        }
+        return listOfResults;
+    }
 
-
-    public String getAlgorithmName(){return algorithmName;}
-    public int[] getUnsortedArray(){return unsortedArray;}
-    public int[] getSortedArray(){return sortedArray;};
-    public double getTimeTaken(){return timeTaken;};
-
+    ;;
 
 
 }

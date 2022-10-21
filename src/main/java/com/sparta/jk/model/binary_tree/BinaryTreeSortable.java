@@ -13,7 +13,7 @@ public interface BinaryTreeSortable {
 
     boolean findElement (int value);
 
-    Node getRootNode();
+    BinarySort.Node getRootNode();
 
     int getLeftChild (int element) throws ChildNotFoundException;
 

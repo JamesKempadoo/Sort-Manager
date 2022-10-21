@@ -1,8 +1,51 @@
 package com.sparta.jk.model.binary_tree;
 
+import com.sparta.jk.controller.OutputResultsManager;
 import com.sparta.jk.exceptions.ChildNotFoundException;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class BinarySort implements BinaryTreeSortable {
+    private static final Logger logger = Logger.getLogger("sort-logger");
+    class Node {
+        private final int value;
+        private Node leftChild; //Can be set to null, but do not want to use them
+        private Node rightChild;
+
+        public Node(int value) {
+            this.value = value;
+        }
+
+        public Node getLeftChild() {
+            return leftChild = leftChild; //return left child
+        }
+
+        public void setLeftChild(Node leftChild) {
+            this.leftChild = leftChild; //set right child
+        }
+
+        public Node getRightChild() {
+            return rightChild; //return right child
+        }
+
+        public void setRightChildNode(Node rightChild) {
+            this.rightChild = rightChild; //set right child
+        }
+
+        public int getValue() {
+            return value; //return value
+        }
+
+        public boolean isLeftChildEmpty() {
+            return leftChild == null; //check if left child is null
+        }
+
+        public boolean isRightChildEmpty() {
+            return rightChild == null; //check if right child is null
+        }
+    }
+
     private final Node rootNode;
     private int numOfNodes = 1;
 
@@ -10,7 +53,9 @@ public class BinarySort implements BinaryTreeSortable {
         this.rootNode = new Node(element);
     }
     public BinarySort(int[] array) {  //can't have a tree without a root Node
+        logger.log(Level.FINE, "Binary Sort Start");
         this.rootNode = new Node(array[0]);
+        logger.log(Level.INFO, "Add elements to Tree");
         addElements(array);
     }
     //nest node class here
@@ -116,8 +161,10 @@ public class BinarySort implements BinaryTreeSortable {
     @Override
     public int[] getSortedTreeAsc() {
         index = 0;
-        int[] sortedTree = new int[numOfNodes];
+        int[] sortedTree = new int[numOfNodes-1];
+        double Out = System.nanoTime();
         sortAsc(rootNode, sortedTree);
+        double end = System.nanoTime();
         return sortedTree;
     }
 
@@ -134,7 +181,7 @@ public class BinarySort implements BinaryTreeSortable {
     @Override
     public int[] getSortedTreeDesc() {
         index = 0;
-        int[] sortedTree = new int[numOfNodes];
+        int[] sortedTree = new int[numOfNodes-1];
         sortDesc(rootNode, sortedTree);
         return sortedTree;
     }

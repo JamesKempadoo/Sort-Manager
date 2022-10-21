@@ -8,7 +8,7 @@ public class CustomFileHandler {
     public static FileHandler getFileHandler() {
         FileHandler fileHandler;
         try {
-            fileHandler = new FileHandler("src/main/resources/my-log.log", true);
+            fileHandler = new FileHandler("src/main/resources/sort-logger.log", true);
             fileHandler.setLevel(Level.ALL);
             fileHandler.setFormatter(new CustomFormatting());
             return fileHandler;
