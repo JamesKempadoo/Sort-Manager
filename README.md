@@ -24,5 +24,7 @@
 > - This will then print out what algorithm was run, unsorted array, sorted array and time taken to run the sort.
 
 
+d
+
 
  
